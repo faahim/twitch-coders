@@ -1,0 +1,82 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box; }
+
+a {
+  display: inline-block;
+  color: #55007D;
+  text-decoration: none; }
+
+body {
+  background-color: #F2EFF7;
+  font-family: 'Montserrat', sans-serif; }
+
+header {
+  background-color: #55007D;
+  color: #fff;
+  padding: 30px 0;
+  text-align: center; }
+  header span {
+    font-family: sans-serif; }
+
+#coders {
+  padding: 50px 0; }
+  #coders .switches {
+    width: 280px;
+    background-color: #fff;
+    margin: 0 auto;
+    border-radius: 6px;
+    overflow: hidden; }
+    #coders .switches:after {
+      content: "";
+      display: table;
+      clear: both; }
+    #coders .switches p {
+      width: 33.3%;
+      padding: 5px;
+      float: left;
+      text-align: center; }
+    #coders .switches p.active {
+      background-color: #55007D;
+      color: #fff; }
+  #coders .channels {
+    padding: 20px 0;
+    width: 80%;
+    margin: 0 auto; }
+    #coders .channels:after {
+      content: "";
+      display: table;
+      clear: both; }
+    #coders .channels .card-container {
+      width: 33.3%;
+      float: left;
+      padding: 20px 20px; }
+      #coders .channels .card-container .card {
+        background-color: #fff;
+        padding: 10px;
+        border-radius: 4px;
+        min-height: 100px;
+        position: relative; }
+        #coders .channels .card-container .card .channel-logo {
+          display: inline-block;
+          float: left; }
+          #coders .channels .card-container .card .channel-logo img {
+            display: inline-block;
+            max-width: 80px;
+            height: auto; }
+        #coders .channels .card-container .card .channel-info {
+          display: inline-block;
+          margin-left: 15px; }
+          #coders .channels .card-container .card .channel-info a, #coders .channels .card-container .card .channel-info p {
+            margin-bottom: 5px; }
+          #coders .channels .card-container .card .channel-info .stream-status:before {
+            content: "";
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #F00;
+            margin-right: 5px; }
+
+/*# sourceMappingURL=style.css.map */

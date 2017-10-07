@@ -1,0 +1,106 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+a {
+	display: inline-block;
+	color: #55007D;
+	text-decoration: none;
+}
+
+//Mixins
+
+@mixin clearfix {
+	content: "";
+  display: table;
+  clear: both;
+}
+
+body {
+	background-color: #F2EFF7;
+	font-family: 'Montserrat', sans-serif;
+}
+
+header {
+	background-color: #55007D;
+	color: #fff;
+	padding: 30px 0;
+	text-align: center;
+	span {
+		font-family: sans-serif;
+	}
+}
+
+#coders {
+	padding: 50px 0;
+	.switches {
+		width: 280px;
+		background-color: #fff;
+		margin: 0 auto;
+		border-radius: 6px;
+		overflow: hidden;
+		&:after {
+			@include clearfix;
+		}
+		p {
+			width: 33.3%;
+			padding: 5px;
+			float: left;
+			text-align: center;
+		}
+		p.active {
+			background-color: #55007D;
+			color: #fff;
+		}
+	}
+	.channels {
+		padding: 20px 0;
+		width: 80%;
+		margin: 0 auto;
+		// background-color: #ddd;
+		&:after {
+			@include clearfix;
+		}
+		.card-container {
+			width: 33.3%;
+			float: left;
+			padding: 20px 20px;
+			.card {
+				background-color: #fff;
+				padding: 10px;
+				border-radius: 4px;
+				min-height: 100px;
+				position: relative;
+				.channel-logo {
+					display: inline-block;
+					float: left;
+					img {
+						display: inline-block;
+						max-width: 80px;
+						height: auto;
+					}
+				}
+				.channel-info {
+					display: inline-block;
+					margin-left: 15px;
+					a, p {
+						margin-bottom: 5px;
+					}
+					.stream-status {
+						&:before {
+							content: "";
+							display: inline-block;
+							width: 12px;
+							height: 12px;
+							border-radius: 50%;
+							background-color: #F00;
+							margin-right: 5px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
