@@ -73,6 +73,13 @@ header {
 				border-radius: 4px;
 				min-height: 100px;
 				position: relative;
+				overflow: hidden;
+				// box-shadow: 0px 0px 5px 0px rgba(202, 184, 184, 1);
+				transition: all 0.5s;
+				&:hover {
+					transform: translateY(-8px);
+					box-shadow: 0px 8px 20px 0px rgba(202, 184, 184, 1);
+				}
 				.channel-logo {
 					display: inline-block;
 					float: left;
@@ -80,11 +87,21 @@ header {
 						display: inline-block;
 						max-width: 80px;
 						height: auto;
+						border-radius: 6px;
 					}
 				}
 				.channel-info {
 					display: inline-block;
+					width: 65%;
 					margin-left: 15px;
+					overflow: hidden;
+					&:hover {
+						position: absolute;
+						width: auto;
+						.channel-status {
+							animation: scroll 5s;
+						}
+					}
 					a, p {
 						margin-bottom: 5px;
 					}
@@ -99,8 +116,24 @@ header {
 							margin-right: 5px;
 						}
 					}
+					.channel-status {
+						overflow: hidden;
+						display: block;
+						position: relative;
+						font-size: 14px;
+						white-space: nowrap;
+						text-overflow: ellipsis;
+						&:hover {
+							width: auto;
+						}
+					}
 				}
 			}
 		}
 	}
+}
+
+@keyframes scroll {
+    0% {left: 0px;}
+    100% {left: -100%;}
 }
