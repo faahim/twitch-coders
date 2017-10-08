@@ -49,6 +49,9 @@ header {
 			padding: 5px;
 			float: left;
 			text-align: center;
+			&:hover {
+				cursor: pointer;
+			}
 		}
 		p.active {
 			background-color: #55007D;
@@ -67,7 +70,8 @@ header {
 			width: 33.3%;
 			float: left;
 			padding: 20px 20px;
-			.card {
+			transition: translate 0.3s;
+			.card-online, .card-offline {
 				background-color: #fff;
 				padding: 10px;
 				border-radius: 4px;
@@ -105,15 +109,26 @@ header {
 					a, p {
 						margin-bottom: 5px;
 					}
-					.stream-status {
+					.stream-active, .stream-inactive  {
 						&:before {
 							content: "";
 							display: inline-block;
 							width: 12px;
 							height: 12px;
 							border-radius: 50%;
-							background-color: #F00;
+							background-color: #E53935;
 							margin-right: 5px;
+						}
+					}
+					.stream-active {
+						padding-left: 20px;
+						position: relative;
+						&:before {
+							position: absolute;
+							left: 3px;
+							top: 3px;
+							background-color: #0091EA;
+							animation: live 3s infinite;
 						}
 					}
 					.channel-status {
@@ -126,6 +141,10 @@ header {
 						&:hover {
 							width: auto;
 						}
+						span {
+							font-weight: 500;
+							border-bottom: 1px solid yellow;
+						}
 					}
 				}
 			}
@@ -135,5 +154,24 @@ header {
 
 @keyframes scroll {
     0% {left: 0px;}
-    100% {left: -100%;}
+    90% {left: -70%;}
+    100% {left: 0px;}
+}
+
+@keyframes live {
+	0% {
+		transform: scale(1.0);
+	}
+	40% {
+		transform: scale(1.2);
+	}
+	55% {
+		transform: scale(1.1);
+	}
+	70% {
+		transform: scale(1.5);
+	}
+	100% {
+		transform: scale(1.0);
+	}
 }
