@@ -42,6 +42,30 @@ header {
     #coders .switches p.active {
       background-color: #55007D;
       color: #fff; }
+  #coders .search {
+    width: 380px;
+    margin: 30px auto;
+    position: relative; }
+    #coders .search input, #coders .search button {
+      border: 2px solid #55007D;
+      outline: none;
+      padding: 6px;
+      font-family: 'Montserrat';
+      font-size: 14px; }
+    #coders .search input {
+      width: 80%;
+      float: left;
+      overflow: hidden;
+      border-radius: 6px 0 0 6px; }
+    #coders .search button {
+      width: 20%;
+      border-radius: 0 6px 6px 0;
+      background-color: #fff;
+      transition: all 0.3s;
+      border-left: none; }
+    #coders .search input:focus + button, #coders .search button:hover {
+      background-color: #55007D;
+      color: #fff; }
   #coders .channels {
     padding: 20px 0;
     width: 80%;
@@ -50,12 +74,18 @@ header {
       content: "";
       display: table;
       clear: both; }
+    #coders .channels .notice {
+      display: none;
+      text-align: center;
+      font-size: 1.5em;
+      font-weight: 500;
+      color: #a2a2a2; }
     #coders .channels .card-container {
       width: 33.3%;
       float: left;
       padding: 20px 20px;
       transition: translate 0.3s; }
-      #coders .channels .card-container .card-online, #coders .channels .card-container .card-offline {
+      #coders .channels .card-container .card, #coders .channels .card-container .card-online, #coders .channels .card-container .card-offline {
         background-color: #fff;
         padding: 10px;
         border-radius: 4px;
@@ -63,30 +93,30 @@ header {
         position: relative;
         overflow: hidden;
         transition: all 0.5s; }
-        #coders .channels .card-container .card-online:hover, #coders .channels .card-container .card-offline:hover {
+        #coders .channels .card-container .card:hover, #coders .channels .card-container .card-online:hover, #coders .channels .card-container .card-offline:hover {
           transform: translateY(-8px);
           box-shadow: 0px 8px 20px 0px #cab8b8; }
-        #coders .channels .card-container .card-online .channel-logo, #coders .channels .card-container .card-offline .channel-logo {
+        #coders .channels .card-container .card .channel-logo, #coders .channels .card-container .card-online .channel-logo, #coders .channels .card-container .card-offline .channel-logo {
           display: inline-block;
           float: left; }
-          #coders .channels .card-container .card-online .channel-logo img, #coders .channels .card-container .card-offline .channel-logo img {
+          #coders .channels .card-container .card .channel-logo img, #coders .channels .card-container .card-online .channel-logo img, #coders .channels .card-container .card-offline .channel-logo img {
             display: inline-block;
             max-width: 80px;
             height: auto;
             border-radius: 6px; }
-        #coders .channels .card-container .card-online .channel-info, #coders .channels .card-container .card-offline .channel-info {
+        #coders .channels .card-container .card .channel-info, #coders .channels .card-container .card-online .channel-info, #coders .channels .card-container .card-offline .channel-info {
           display: inline-block;
           width: 65%;
           margin-left: 15px;
           overflow: hidden; }
-          #coders .channels .card-container .card-online .channel-info:hover, #coders .channels .card-container .card-offline .channel-info:hover {
+          #coders .channels .card-container .card .channel-info:hover, #coders .channels .card-container .card-online .channel-info:hover, #coders .channels .card-container .card-offline .channel-info:hover {
             position: absolute;
             width: auto; }
-            #coders .channels .card-container .card-online .channel-info:hover .channel-status, #coders .channels .card-container .card-offline .channel-info:hover .channel-status {
+            #coders .channels .card-container .card .channel-info:hover .channel-status, #coders .channels .card-container .card-online .channel-info:hover .channel-status, #coders .channels .card-container .card-offline .channel-info:hover .channel-status {
               animation: scroll 5s; }
-          #coders .channels .card-container .card-online .channel-info a, #coders .channels .card-container .card-online .channel-info p, #coders .channels .card-container .card-offline .channel-info a, #coders .channels .card-container .card-offline .channel-info p {
+          #coders .channels .card-container .card .channel-info a, #coders .channels .card-container .card .channel-info p, #coders .channels .card-container .card-online .channel-info a, #coders .channels .card-container .card-online .channel-info p, #coders .channels .card-container .card-offline .channel-info a, #coders .channels .card-container .card-offline .channel-info p {
             margin-bottom: 5px; }
-          #coders .channels .card-container .card-online .channel-info .stream-active:before, #coders .channels .card-container .card-online .channel-info .stream-inactive:before, #coders .channels .card-container .card-offline .channel-info .stream-active:before, #coders .channels .card-container .card-offline .channel-info .stream-inactive:before {
+          #coders .channels .card-container .card .channel-info .stream-active:before, #coders .channels .card-container .card .channel-info .stream-inactive:before, #coders .channels .card-container .card-online .channel-info .stream-active:before, #coders .channels .card-container .card-online .channel-info .stream-inactive:before, #coders .channels .card-container .card-offline .channel-info .stream-active:before, #coders .channels .card-container .card-offline .channel-info .stream-inactive:before {
             content: "";
             display: inline-block;
             width: 12px;
@@ -94,33 +124,73 @@ header {
             border-radius: 50%;
             background-color: #E53935;
             margin-right: 5px; }
-          #coders .channels .card-container .card-online .channel-info .stream-active, #coders .channels .card-container .card-offline .channel-info .stream-active {
+          #coders .channels .card-container .card .channel-info .stream-active, #coders .channels .card-container .card-online .channel-info .stream-active, #coders .channels .card-container .card-offline .channel-info .stream-active {
             padding-left: 20px;
             position: relative; }
-            #coders .channels .card-container .card-online .channel-info .stream-active:before, #coders .channels .card-container .card-offline .channel-info .stream-active:before {
+            #coders .channels .card-container .card .channel-info .stream-active:before, #coders .channels .card-container .card-online .channel-info .stream-active:before, #coders .channels .card-container .card-offline .channel-info .stream-active:before {
               position: absolute;
               left: 3px;
               top: 3px;
               background-color: #0091EA;
               animation: live 3s infinite; }
-          #coders .channels .card-container .card-online .channel-info .channel-status, #coders .channels .card-container .card-offline .channel-info .channel-status {
+          #coders .channels .card-container .card .channel-info .channel-status, #coders .channels .card-container .card-online .channel-info .channel-status, #coders .channels .card-container .card-offline .channel-info .channel-status {
             overflow: hidden;
             display: block;
             position: relative;
             font-size: 14px;
             white-space: nowrap;
             text-overflow: ellipsis; }
-            #coders .channels .card-container .card-online .channel-info .channel-status:hover, #coders .channels .card-container .card-offline .channel-info .channel-status:hover {
+            #coders .channels .card-container .card .channel-info .channel-status:hover, #coders .channels .card-container .card-online .channel-info .channel-status:hover, #coders .channels .card-container .card-offline .channel-info .channel-status:hover {
               width: auto; }
-            #coders .channels .card-container .card-online .channel-info .channel-status span, #coders .channels .card-container .card-offline .channel-info .channel-status span {
+            #coders .channels .card-container .card .channel-info .channel-status span, #coders .channels .card-container .card-online .channel-info .channel-status span, #coders .channels .card-container .card-offline .channel-info .channel-status span {
               font-weight: 500;
               border-bottom: 1px solid yellow; }
+          #coders .channels .card-container .card .channel-info .more-info, #coders .channels .card-container .card-online .channel-info .more-info, #coders .channels .card-container .card-offline .channel-info .more-info {
+            display: none; }
+      #coders .channels .card-container .card > p {
+        font-size: 18px;
+        font-weight: 500;
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); }
+    #coders .channels .search-result {
+      width: 60%;
+      float: none;
+      margin: 0 auto;
+      text-align: center; }
+      #coders .channels .search-result .card, #coders .channels .search-result .card-online, #coders .channels .search-result .card-offline {
+        padding: 30px; }
+        #coders .channels .search-result .card .channel-logo, #coders .channels .search-result .card-online .channel-logo, #coders .channels .search-result .card-offline .channel-logo {
+          float: none;
+          margin: 0 auto;
+          display: block; }
+          #coders .channels .search-result .card .channel-logo img, #coders .channels .search-result .card-online .channel-logo img, #coders .channels .search-result .card-offline .channel-logo img {
+            max-width: 60%; }
+        #coders .channels .search-result .card .channel-info, #coders .channels .search-result .card-online .channel-info, #coders .channels .search-result .card-offline .channel-info {
+          width: 100%;
+          margin-left: 0; }
+          #coders .channels .search-result .card .channel-info:hover, #coders .channels .search-result .card-online .channel-info:hover, #coders .channels .search-result .card-offline .channel-info:hover {
+            position: relative;
+            width: 100%; }
+            #coders .channels .search-result .card .channel-info:hover .channel-status, #coders .channels .search-result .card-online .channel-info:hover .channel-status, #coders .channels .search-result .card-offline .channel-info:hover .channel-status {
+              animation: none; }
+          #coders .channels .search-result .card .channel-info .more-info, #coders .channels .search-result .card-online .channel-info .more-info, #coders .channels .search-result .card-offline .channel-info .more-info {
+            display: inline-block;
+            padding: 8px 40px;
+            border: 2px solid #55007D;
+            border-radius: 6px;
+            transition: all 0.3s; }
+            #coders .channels .search-result .card .channel-info .more-info:hover, #coders .channels .search-result .card-online .channel-info .more-info:hover, #coders .channels .search-result .card-offline .channel-info .more-info:hover {
+              background-color: #55007D;
+              color: #fff; }
 
 @keyframes scroll {
   0% {
     left: 0px; }
   90% {
-    left: -70%; }
+    left: -80%; }
   100% {
     left: 0px; } }
 @keyframes live {
