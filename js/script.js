@@ -1,9 +1,9 @@
 $(document).ready( function() {
-	var sources = ["monstercat"];
-	 var sourcesBak = ["ESL_SC2", "OgamingSC2", "cretetion",
-	 "freecodecamp", "habathcx", "RobotCaleb",
+	// var sources = ["monstercat"];
+	 var sources = ["esl_sc2", "ogamingsc2", "cretetion",
+	 "freecodecamp", "habathcx", "robotcaleb",
 	 "noobs2ninjas", "noopkat", "dreamleague",
-	 "throwdowntv", "Omgitsfirefoxx", "kindafunnygames",
+	 "throwdowntv", "omgitsfirefoxx", "kindafunnygames",
 	 "manvsgame", "trihex", "nightblue3", "kittyplays",
 	 "open_mailbox", "danrovito", "handmade_hero",
 	 "tsoding", "rw_grim", "daroou2", "nmarulo",
@@ -11,7 +11,7 @@ $(document).ready( function() {
 	 "codedependant", "blocksandgold", "syntag",
 	 "devwars", "krzjn", "drathy", 
 	 "pajlada", "abnercoimbre", "automateallthethings", 
-	 "loonygeekfun", "monstercat", "LOL"];
+	 "loonygeekfun", "monstercat"];
 	var endPoint = "https://wind-bow.glitch.me/twitch-api/";
 	var channelDataAPICall = endPoint+"channels/";
 	var channelStreamAPICall = endPoint+"streams/";
@@ -19,6 +19,7 @@ $(document).ready( function() {
 	var channelLogo;
 	var isLive;
 	var isSearch = "";
+	var Timer;
 
 	function magic() {
 		for (i=0; i < sources.length; i++) {
@@ -42,7 +43,7 @@ $(document).ready( function() {
 						type: "GET",
 						dataType: "jsonp",
 						success: function(streamData) {
-							// console.log(streamData);
+							// console.log(channelData);
 							if (channelData.logo !== null) {
 								channelLogo = channelData.logo;
 							} else {
@@ -55,6 +56,7 @@ $(document).ready( function() {
 								isLive = true;
 							}
 							// console.log(isLive);
+							$(".notice").fadeOut();
 
 							if (isLive) {
 								$(".channels").append(
@@ -74,8 +76,9 @@ $(document).ready( function() {
 						}
 					})
 				} else {
+					$(".notice").fadeOut();
 					$(".channels").append(
-					"<div class='card-container "+isSearch+"'><div class='card'><p>This doesn't exits, You've found a black hole! ⚫⚫⚫</p></div></div>"
+					"<div class='card-container "+isSearch+" no-result'><div class='card'><p>Channel doesn't exits on Twitch, You've found a black hole! ⚫⚫⚫</p></div></div>"
 					);
 				}
 			}
@@ -85,7 +88,7 @@ $(document).ready( function() {
 	function search() {
 		$("#channel-query").submit(function() {
 			event.preventDefault();
-			$(".card-container").fadeOut();
+			$(".card-container, .notice").fadeOut();
 			var searchData = document.getElementById('search-string').value;
 			channelDataAPICall = endPoint+"channels/"+searchData;
 			console.log(channelDataAPICall);
@@ -127,6 +130,34 @@ $(document).ready( function() {
 				$(".notice").text("The Earth is on fire! 😀 Go to Mars if you're searching for some place quite.").fadeIn();
 			}
 		});
+
+		//Search on Fly
+
+		$("#search-string").keyup(function() {
+			clearTimeout(Timer);
+			Timer = setTimeout(getValue, 1000);
+		})
+
+		$.extend($.expr[":"], {
+		"containsIN": function(elem, i, match, array) {
+		return (elem.textContent || elem.innerText || "").toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
+		}
+		});
+
+		function getValue() {
+			$(".card-container, .notice").fadeOut();
+			var onFlySearch = $("#search-string").val();
+			var areYouThere = $(".card-container:containsIN('"+onFlySearch+"')");
+
+			if (areYouThere.length > 0) {
+				$(".card-container, .notice").fadeOut().delay(400);
+				$(".card-container:containsIN('"+onFlySearch+"')").fadeIn();
+			} else {
+				$(".card-container, .notice").fadeOut().delay(400);
+				$(".no-result").fadeIn().delay(600);
+				$(".notice").text("Not found, Press Enter to search on Twitch!").fadeIn();
+			}
+		}
 
 	magic();
 	search();
