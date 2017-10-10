@@ -38,7 +38,7 @@ header {
 	.switches {
 		width: 280px;
 		background-color: #fff;
-		margin: 0 auto;
+		margin: 30px auto 0;
 		border-radius: 6px;
 		overflow: hidden;
 		&:after {
@@ -60,7 +60,7 @@ header {
 	}
 	.search {
 		width: 380px;
-		margin: 30px auto;
+		margin: 0 auto;
 		position: relative;
 		input, button {
 			border: 2px solid #55007D;
@@ -188,7 +188,7 @@ header {
 				}
 			}
 			.card > p {
-				font-size: 18px;
+				font-size: 16px;
 				font-weight: 500;
 				text-align: center;
 				position: absolute;
@@ -220,6 +220,14 @@ header {
 						width: 100%;
 						.channel-status {
 							animation: none;
+						}
+					}
+					.stream-active {
+						padding-left: 0;
+						&:before {
+							position: relative;
+							top: 0;
+							left: 0;
 						}
 					}
 					.more-info {
