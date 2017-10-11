@@ -58,6 +58,7 @@ $(document).ready( function() {
 							}
 							// console.log(isLive);
 							$(".notice").fadeOut();
+							$("footer").fadeIn().delay(2000);
 
 							if (isLive) {
 								$(".channels").append(
@@ -82,13 +83,16 @@ $(document).ready( function() {
 					"<div class='card-container "+isSearch+" no-result'><div class='card'><p>Channel doesn't exits on Twitch, You've found a black hole! ⚫⚫⚫</p></div></div>"
 					);
 				}
-			}
+			},
+			error: function (xhr, ajaxOptions, thrownError) {
+	      $(".loader").text("Failed to fetch data! 😟 Is your internet working?");
+	    }
 		})
 	}
 
 	function search() {
-		$("#channel-query").submit(function() {
-			event.preventDefault();
+		$("#channel-query").submit(function(e) {
+			e.preventDefault();
 			$(".card-container, .notice").fadeOut();
 			$(".search-result").remove();
 			var searchData = document.getElementById('search-string').value;
@@ -104,14 +108,14 @@ $(document).ready( function() {
 			$(".all").addClass("active");
 			$(".search-result").remove();
 			$(".notice").fadeOut();
-			$(".card-container").fadeOut().delay(500).fadeIn();
+			$(".card-container, .love").fadeOut().delay(500).fadeIn();
 		});
 
 		$(".online").click( function(){
 			$(".switches").find("p").removeClass("active");
 			$(".online").addClass("active");
 			$(".search-result").remove();
-			$(".card-container, .notice").fadeOut().delay(500);
+			$(".card-container, .notice, .love").fadeOut().delay(500);
 			var isAnyOnline = $(".card-online").length;
 			if (isAnyOnline) {
 				$(".card-online").parent().fadeIn();
@@ -124,7 +128,7 @@ $(document).ready( function() {
 			$(".switches").find("p").removeClass("active");
 			$(".offline").addClass("active");
 			$(".search-result").remove();
-			$(".card-container, .notice").fadeOut().delay(500);
+			$(".card-container, .notice, .love").fadeOut().delay(500);
 			var isAnyOffline = $(".card-offline").length;
 			if (isAnyOffline) {
 				$(".card-offline").parent().fadeIn();
@@ -147,7 +151,7 @@ $(document).ready( function() {
 		});
 
 		function getValue() {
-			$(".card-container, .notice").fadeOut();
+			$(".card-container, .notice, .love").fadeOut();
 			// $(".search-result").remove();
 			var onFlySearch = $("#search-string").val();
 			var areYouThere = $(".card-container:containsIN('"+onFlySearch+"')");
