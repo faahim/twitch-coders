@@ -4,18 +4,20 @@
 	box-sizing: border-box;
 }
 
-a {
-	display: inline-block;
-	color: #55007D;
-	text-decoration: none;
-}
-
-//Mixins
-
+//*********Mixins*********
 @mixin clearfix {
 	content: "";
   display: table;
   clear: both;
+}
+
+
+//*********Styles*********
+
+a {
+	display: inline-block;
+	color: #55007D;
+	text-decoration: none;
 }
 
 body {
@@ -91,7 +93,6 @@ header {
 		padding: 20px 0;
 		width: 80%;
 		margin: 0 auto;
-		// background-color: #ddd;
 		&:after {
 			@include clearfix;
 		}
@@ -118,7 +119,6 @@ header {
 				min-height: 100px;
 				position: relative;
 				overflow: hidden;
-				// box-shadow: 0px 0px 5px 0px rgba(202, 184, 184, 1);
 				transition: all 0.5s;
 				&:hover {
 					transform: translateY(-8px);
@@ -136,7 +136,6 @@ header {
 				}
 				.channel-info {
 					display: inline-block;
-					// float: right;
 					width: 65%;
 					padding-left: 15px;
 					overflow: hidden;
@@ -269,7 +268,8 @@ footer {
 	}
 }
 
-//Media Queries....
+
+//*********Media Queries*********
 
 @media (max-width: 1100px) {
 	#coders {
@@ -349,12 +349,15 @@ footer {
 	}
 }
 
+//*********Animations*********
+//Showing channels status
 @keyframes scroll {
     0% {left: 0px;}
     90% {left: -80%;}
     100% {left: 0px;}
 }
 
+//Channels status
 @keyframes live {
 	0% {
 		transform: scale(1.0);
