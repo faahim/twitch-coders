@@ -26,7 +26,7 @@ body {
 header {
 	background-color: #55007D;
 	color: #fff;
-	padding: 30px 0;
+	padding: 20px 0;
 	text-align: center;
 	span {
 		font-family: sans-serif;
@@ -34,7 +34,7 @@ header {
 }
 
 #coders {
-	padding: 50px 0;
+	padding: 40px 0;
 	.switches {
 		width: 280px;
 		background-color: #fff;
@@ -136,8 +136,9 @@ header {
 				}
 				.channel-info {
 					display: inline-block;
+					// float: right;
 					width: 65%;
-					margin-left: 15px;
+					padding-left: 15px;
 					overflow: hidden;
 					&:hover {
 						position: absolute;
@@ -251,6 +252,103 @@ header {
 	}
 }
 
+footer {
+	.love {
+		font-weight: 500;
+		font-size: 14px;
+		text-align: center;
+		a {
+			padding: 0 0 20px;
+			transition: all 0.3s;
+		}
+		.material-icons {
+			color: #55007D;
+			font-size: 16px;
+			animation: heartbeat 3s infinite;
+		}
+	}
+}
+
+//Media Queries....
+
+@media (max-width: 1100px) {
+	#coders {
+		.channels {
+			.card-container {
+				width: 50%;
+				.card, .card-online, .card-offline {
+					.channel-info {
+						width: 75%;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 992px) {
+	#coders {
+		.channels {
+			.card-container {
+				.card, .card-online, .card-offline {
+					.channel-info {
+						width: 65%;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 992px) {
+	#coders {
+		.channels {
+			.card-container {
+				width: 100%;
+				.card, .card-online, .card-offline {
+					.channel-info {
+						width: 75%;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 479px) {
+	header {
+		h1 {
+			font-size: 22px;
+		}
+		p{
+			font-size: 15px;
+		}
+	}
+	#coders {
+		padding-bottom: 10px;
+		.search {
+			width: 300px;
+			input, button {
+				font-size: 12px;
+			}
+		}
+		.switches {
+			width: 220px;
+			font-size: 16px;
+		}
+		.channels {
+			width: 95%;
+			.card-container {
+				.card, .card-online, .card-offline {
+					.channel-info {
+						width: 65%;
+					}
+				}
+			}
+		}
+	}
+}
+
 @keyframes scroll {
     0% {left: 0px;}
     90% {left: -80%;}
@@ -269,6 +367,28 @@ header {
 	}
 	70% {
 		transform: scale(1.5);
+	}
+	100% {
+		transform: scale(1.0);
+	}
+}
+
+/*Beating heart animation keyframe*/
+@keyframes heartbeat {
+	0% {
+		transform: scale(1.0);
+	}
+	5% {
+		transform: scale(1.3);
+	}
+	10% {
+		transform: scale(1.1);
+	}
+	20% {
+		transform: scale(1.5);
+	}
+	30% {
+		transform: scale(1.0);
 	}
 	100% {
 		transform: scale(1.0);
