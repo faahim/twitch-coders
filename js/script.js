@@ -1,5 +1,4 @@
 $(document).ready( function() {
-	// var sources = ["monstercat"];
 	 var sources = ["esl_sc2", "ogamingsc2", "cretetion",
 	 "freecodecamp", "habathcx", "robotcaleb",
 	 "noobs2ninjas", "noopkat", "dreamleague",
@@ -12,6 +11,7 @@ $(document).ready( function() {
 	 "devwars", "krzjn", "drathy", 
 	 "pajlada", "abnercoimbre", "automateallthethings", 
 	 "loonygeekfun", "monstercat"];
+	 console.log(sources.length);
 	var endPoint = "https://wind-bow.glitch.me/twitch-api/";
 	var channelDataAPICall = endPoint+"channels/";
 	var channelStreamAPICall = endPoint+"streams/";
@@ -43,7 +43,8 @@ $(document).ready( function() {
 						type: "GET",
 						dataType: "jsonp",
 						success: function(streamData) {
-							// console.log(channelData);
+							$(".loader").remove();
+
 							if (channelData.logo !== null) {
 								channelLogo = channelData.logo;
 							} else {
@@ -89,6 +90,7 @@ $(document).ready( function() {
 		$("#channel-query").submit(function() {
 			event.preventDefault();
 			$(".card-container, .notice").fadeOut();
+			$(".search-result").remove();
 			var searchData = document.getElementById('search-string').value;
 			channelDataAPICall = endPoint+"channels/"+searchData;
 			console.log(channelDataAPICall);
@@ -146,16 +148,22 @@ $(document).ready( function() {
 
 		function getValue() {
 			$(".card-container, .notice").fadeOut();
+			// $(".search-result").remove();
 			var onFlySearch = $("#search-string").val();
 			var areYouThere = $(".card-container:containsIN('"+onFlySearch+"')");
+			console.log(areYouThere.length);
 
-			if (areYouThere.length > 0) {
+			if (areYouThere.length >= sources.length) {
+				$(".card-container, .notice").fadeOut().delay(400);
+				$(".search-result").remove();
+				$(".card-container:containsIN('"+onFlySearch+"')").fadeIn();
+			} else if (areYouThere.length > 0) {
 				$(".card-container, .notice").fadeOut().delay(400);
 				$(".card-container:containsIN('"+onFlySearch+"')").fadeIn();
 			} else {
 				$(".card-container, .notice").fadeOut().delay(400);
 				$(".no-result").fadeIn().delay(600);
-				$(".notice").text("Not found, Press Enter to search on Twitch!").fadeIn();
+				$(".notice").text("S/he isn't here 😿 Press Enter to search on Twitch!").fadeIn();
 			}
 		}
 
