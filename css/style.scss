@@ -95,12 +95,16 @@ header {
 		&:after {
 			@include clearfix;
 		}
-		.notice {
+		.notice, .loader {
 			display: none;
+			margin-top: 50px;
 			text-align: center;
 			font-size: 1.5em;
 			font-weight: 500;
 			color: #a2a2a2;
+		}
+		.loader {
+			display: block;
 		}
 		.card-container {
 			width: 33.3%;

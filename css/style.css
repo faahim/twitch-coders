@@ -74,12 +74,15 @@ header {
       content: "";
       display: table;
       clear: both; }
-    #coders .channels .notice {
+    #coders .channels .notice, #coders .channels .loader {
       display: none;
+      margin-top: 50px;
       text-align: center;
       font-size: 1.5em;
       font-weight: 500;
       color: #a2a2a2; }
+    #coders .channels .loader {
+      display: block; }
     #coders .channels .card-container {
       width: 33.3%;
       float: left;
