@@ -1,18 +1,30 @@
 $(document).ready( function() {
 
 	//The list of channels username that'll be fetched
-	 var sources = ["esl_sc2", "ogamingsc2", "cretetion",
-	 "freecodecamp", "habathcx", "robotcaleb",
-	 "noobs2ninjas", "noopkat", "dreamleague",
-	 "throwdowntv", "omgitsfirefoxx", "kindafunnygames",
-	 "manvsgame", "trihex", "nightblue3", "kittyplays",
-	 "open_mailbox", "danrovito", "handmade_hero",
-	 "tsoding", "rw_grim", "daroou2", "nmarulo",
+	 var sources = ["freecodecamp", "robotcaleb",
+	 "noobs2ninjas", "noopkat", "trihex", "open_mailbox",
+	 "danrovito", "handmade_hero", "tsoding",
+	 "rw_grim", "daroou2", "nmarulo",
 	 "mikeconley_dot_ca", "vinlam", "gaprogman",
 	 "codedependant", "blocksandgold", "syntag",
-	 "devwars", "krzjn", "drathy", 
-	 "pajlada", "abnercoimbre", "automateallthethings", 
-	 "loonygeekfun", "monstercat"];
+	 "devwars", "krzjn", "drathy",
+	 "jhovgaard", "pajlada", "abnercoimbre",
+	 "automateallthethings", "liveordevtrying", "sipher_academy",
+	 "michaelvhenderson", "monstercat", "esl_sc2"];
+
+	 //Alternative sources of channels
+	 // var sources = ["esl_sc2", "ogamingsc2", "cretetion",
+	 // "freecodecamp", "habathcx", "robotcaleb",
+	 // "noobs2ninjas", "noopkat", "dreamleague",
+	 // "throwdowntv", "omgitsfirefoxx", "kindafunnygames",
+	 // "manvsgame", "trihex", "nightblue3", "kittyplays",
+	 // "open_mailbox", "danrovito", "handmade_hero",
+	 // "tsoding", "rw_grim", "daroou2", "nmarulo",
+	 // "mikeconley_dot_ca", "vinlam", "gaprogman",
+	 // "codedependant", "blocksandgold", "syntag",
+	 // "devwars", "krzjn", "drathy", 
+	 // "pajlada", "abnercoimbre", "automateallthethings", 
+	 // "loonygeekfun", "monstercat"];
 
 	var endPoint = "https://wind-bow.glitch.me/twitch-api/";
 	var channelDataAPICall = endPoint+"channels/";
